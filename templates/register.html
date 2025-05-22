@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <h2>Register</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}<br>
+        {% if username_error %}
+            <span style="color: red;">{{ username_error }}</span><br>
+        {% endif %}
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}<br>
+        {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+
+        {{ form.email.label }}<br>
+        {{ form.email(size=32) }}<br>
+        {% if email_error %}
+            <span style="color: red;">{{ email_error }}</span><br>
+        {% endif %}
+
+        {{ form.submit() }}
+    </form>
+{% endblock %}
